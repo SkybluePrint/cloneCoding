@@ -8,8 +8,3 @@ bgImage.src=`img/${randomImages}`;
 
 const body =document.body.appendChild(bgImage);
 
-
-console.log(images);
-console.log(randomImages);
-
-console.log(bgImage);
