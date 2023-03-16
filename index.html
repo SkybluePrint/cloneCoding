@@ -5,35 +5,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style> @import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);</style>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/30e85726a0.js" crossorigin="anonymous"></script> 
     <title>Momentum App</title>
 </head>
 
 <body>
-    <button id="logout-button" class="hidden">Log Out</button>
-    <form id="login-form" class="hidden">
-        <input required maxlength="15" type="text" placeholder="what is your name?" />
-        <button>Log In</button>
-    </form>
-    <h2 id="clock">00:00:00</h2>
-    <h1 id="greeting" class="hidden"></h1>
+    <div class="container">
+        <header>
+                <button id="logout-button" class="hidden">
+                    <i class="fa-solid fa-house"></i>
+                </button>
 
-    <form id="todo-form" class="hidden">
-        <input type="text" placeholder="Write a To Do List and Press Enter" />
-    </form>
-    <ul id="todo-list" class="hidden"></ul>
-    <div id="quote">
-        <span></span>
-        <span></span>
+            <div id="clock">
+                <h2 id="clock">00:00:00</h2>
+            </div>
+            
+        </header>
+
+        <section>
+
+                <form id="login-form" class="hidden">
+                    <label>STAR NAME</label>
+                    <input required maxlength="15" type="text" placeholder="who is your star?" style="text-align: center;" />
+                    <button style="width: 25vh;">
+                        <i class="fa-regular fa-hand-pointer"></i>
+                        LOG IN
+                    </button>
+                </form>
+
+            <div>
+                <h1 id="greeting" class="hidden"></h1>
+            </div>
+            
+            <div>
+                <form id="todo-form" class="hidden">
+                    <input type="text" placeholder="Write a To Do List and Press Enter" />
+                </form>
+                <ul id="todo-list" class="hidden"></ul>
+            </div>
+        </section>
+
+        <footer>
+            <div id="quote">
+                <span></span>
+                <span></span>
+            </div>
+        </footer>
     </div>
-
-    <a href="https://nomadcoders.co">Go to courses</a>
-
+    <!-- <a href="https://nomadcoders.co">Go to courses</a> -->
+    
     <script src="js/greeting.js"></script>
-    <script src="js/userID.js"></script>
     <script src="js/clock.js"></script>
     <script src="js/quotes.js"></script>
     <script src="js/backGround.js"></script>
+    <!-- <script src="js/weather.js"></script> -->
 </body>
 
 </html>

@@ -7,33 +7,28 @@ const toDoList = document.querySelector("#todo-list");
 const toDoForm = document.querySelector("#todo-form");
 const toDoInput = toDoForm.querySelector("input");
 let deleteId;
+let saveUserName;
 
 const HIDDEN_CLASSNAME = "hidden";
 const USER_NAME = "username";
 let toDos = [];
 const TODOS_KEY = "todos";
 
+//CLICK_EVENT
 function hadleLinkClick(event) {
     event.preventDefault();
 }
 
+//CLICK_EVENT
 function loginButtonClick(event) {
     event.preventDefault();
     const username = loginInput.value;
-    loginForm.classList.add(HIDDEN_CLASSNAME);
-    // greeting.innerText = "Hello " + username;
     localStorage.setItem(USER_NAME, username);
     paintGreetings(username);
+    loginForm.classList.add(HIDDEN_CLASSNAME);
 }
 
-function paintGreetings(saveUserName) {
-    greeting.classList.remove(HIDDEN_CLASSNAME);
-    greeting.innerText = `Hello ${saveUserName}`;
-    logOut.classList.remove(HIDDEN_CLASSNAME);
-    toDoList.classList.remove(HIDDEN_CLASSNAME);
-    toDoForm.classList.remove(HIDDEN_CLASSNAME);
-}
-
+//CLICK_EVENT => logout해서 다시 main으로 
 function logOutButton(event) {
     event.preventDefault();
     localStorage.removeItem(USER_NAME);
@@ -44,6 +39,16 @@ function logOutButton(event) {
     main();
 }
 
+//Login시 class = HIDDEN 값 넣어주는 함수
+function paintGreetings(saveUserName) {
+    greeting.classList.remove(HIDDEN_CLASSNAME);
+    greeting.innerText = `Hello ${saveUserName}`;
+    logOut.classList.remove(HIDDEN_CLASSNAME);
+    toDoList.classList.remove(HIDDEN_CLASSNAME);
+    toDoForm.classList.remove(HIDDEN_CLASSNAME);
+}
+
+//ToDo_List Creator
 function paintToDo(newTodo) {
     const li = document.createElement("li");
     const span = document.createElement("span");
@@ -57,44 +62,28 @@ function paintToDo(newTodo) {
     toDoList.appendChild(li);
 }
 
+//LocalStorage => save todos
 function saveToDos() {
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
 }
 
+//DELETE_AND_LOCALSTORAGE_ARRAY 변환
 function DeleteToDo(event) {
     const li = event.target.parentElement;
     li.remove();
     deleteId = li.id;
     const localToDo = localStorage.getItem(TODOS_KEY);
     let deleteLocalToDo = parseTodoObject(localToDo);
-    console.log(deleteLocalToDo);
-    console.log("--------");
     toDos = deleteLocalToDo.filter(sexyfilter);
-
-    console.log(deleteLocalToDo);
-    console.log(toDos);
     saveToDos();
-    // console.log(findid(deleteLocalToDo, deleteId));
-    // deleteLocalToDo[findid(deleteLocalToDo, deleteId)];
-    // toDos = deleteLocalToDo;
 }
 
+//FILTER FUNCTION
 function sexyfilter(Item) {
     return Item.id !== Number(deleteId)
 }
 
-
-// function findid(deleteLocalToDo, deleteId) {
-//     let index = 0;
-//     for (let i = 0; i < deleteLocalToDo.length; i++) {
-//         if (deleteLocalToDo[i].id === deleteId) {
-//             index = i;
-//             break;
-//         }
-//     }
-//     return index;
-// }
-
+//TODO
 function handToDoSubmit(event) {
     event.preventDefault();
     const newTodo = toDoInput.value;
@@ -108,13 +97,12 @@ function handToDoSubmit(event) {
     saveToDos();
 }
 
-
-
 function logInManager() {
-    const saveUserName = localStorage.getItem(USER_NAME);
+    saveUserName = localStorage.getItem(USER_NAME);
     if (saveUserName === null) {
         //show the form
         loginForm.classList.remove(HIDDEN_CLASSNAME);
+        console.log("ok");
         loginForm.addEventListener("submit", loginButtonClick);
     } else {
         //show the h1
@@ -125,9 +113,9 @@ function logInManager() {
             console.log(toDos);
         }
         paintGreetings(saveUserName);
-        // event.preventDefault();
     }
 }
+
 function main() {
     toDoForm.addEventListener("submit", handToDoSubmit);
     logOut.addEventListener("click", logOutButton);
@@ -145,13 +133,5 @@ function parseTodoObject(localToDo) {
     return parseToDos;
 }
 
-// const localToDo = localStorage.getItem(TODOS_KEY);
-// if (localToDo !== null) {
-//     toDos = parseTodoObject(localToDo);
-//     toDos.forEach(paintToDo);
-//     console.log(toDos);
-// }
-
 main();
-// link.addEventListener("click", hadleLinkClick);
-// loginForm.addEventListener("submit", loginButtonClick);
+
