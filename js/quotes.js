@@ -44,12 +44,21 @@ const quotes = [
 const quote = document.querySelector("#quote span:first-child");
 const author = document.querySelector("#quote span:last-child");
 
-const randomNum = Math.floor((Math.random()*quotes.length));
+let randomNum = Math.floor((Math.random()*quotes.length));
 // Math.round(1,0); // 반올림
 // Math.ceil(1.2); //올림
 // Math.floor(1.9); // 내림
 
-const todaysQoute = quotes[randomNum];
+let todaysQoute = quotes[randomNum];
+quote.innerText = `${todaysQoute.quote}\n`;
+author.innerText = `Author : ${todaysQoute.author}`;
 
-quote.innerText = `${todaysQoute.quote}`;
-author.innerText = `${todaysQoute.author}`;
+function quoteLotation(){
+    randomNum = Math.floor((Math.random()*quotes.length));
+    todaysQoute = quotes[randomNum];
+    quote.innerText = `${todaysQoute.quote}\n`;
+    author.innerText = `Author : ${todaysQoute.author}`;
+}
+
+setInterval(quoteLotation ,8000);
+

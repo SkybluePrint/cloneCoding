@@ -5,46 +5,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style> @import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);</style>
+    <style>
+        @import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+    </style>
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://kit.fontawesome.com/30e85726a0.js" crossorigin="anonymous"></script> 
+    <script src="https://kit.fontawesome.com/30e85726a0.js" crossorigin="anonymous"></script>
     <title>Momentum App</title>
 </head>
 
 <body>
     <div class="container">
         <header>
-                <button id="logout-button" class="hidden">
-                    <i class="fa-solid fa-house"></i>
-                </button>
+            <button id="logout-button" class="hidden">
+                <i class="fa-solid fa-rocket"></i>
+                    LOG OUT 
+            </button>
 
             <div id="clock">
                 <h2 id="clock">00:00:00</h2>
             </div>
-            
+
         </header>
 
         <section>
-
+            <div id="contentsdiv">
                 <form id="login-form" class="hidden">
                     <label>STAR NAME</label>
-                    <input required maxlength="15" type="text" placeholder="who is your star?" style="text-align: center;" />
-                    <button style="width: 25vh;">
-                        <i class="fa-regular fa-hand-pointer"></i>
+                    <input required maxlength="15" type="text" placeholder="YOU ARE MY STAR"
+                        style="text-align: center;" />
+                    <button style="width: 210px; height: 30px;">
+                        <i class="fa-solid fa-rocket" style="margin-right: 5px";></i>
                         LOG IN
                     </button>
                 </form>
+                <div id="logincontainer">
+                    <h1 id="greeting" class="hidden" style="font-size: 40px; font-weight: bolder;"></h1>
+                    <div id="todocontain">
+                        <form id="todo-form" class="hidden">
+                            <label>여행할 행성 :</label>
+                            <input type="text" style="width:50vw; border-radius: 0.5rem;"/>
+                        </form>
+                        
+                        <ul id="todo-list" class="hidden"></ul>
+                    </div>
+                </div>
 
-            <div>
-                <h1 id="greeting" class="hidden"></h1>
             </div>
-            
-            <div>
-                <form id="todo-form" class="hidden">
-                    <input type="text" placeholder="Write a To Do List and Press Enter" />
-                </form>
-                <ul id="todo-list" class="hidden"></ul>
-            </div>
+
         </section>
 
         <footer>
@@ -55,7 +62,7 @@
         </footer>
     </div>
     <!-- <a href="https://nomadcoders.co">Go to courses</a> -->
-    
+
     <script src="js/greeting.js"></script>
     <script src="js/clock.js"></script>
     <script src="js/quotes.js"></script>

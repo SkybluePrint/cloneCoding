@@ -26,6 +26,7 @@ function loginButtonClick(event) {
     localStorage.setItem(USER_NAME, username);
     paintGreetings(username);
     loginForm.classList.add(HIDDEN_CLASSNAME);
+    loginForm.id = "";
 }
 
 //CLICK_EVENT => logout해서 다시 main으로 
@@ -36,16 +37,39 @@ function logOutButton(event) {
     greeting.classList.add(HIDDEN_CLASSNAME);
     toDoList.classList.add(HIDDEN_CLASSNAME);
     toDoForm.classList.add(HIDDEN_CLASSNAME);
+    loginInput.value = "";
+    loginForm.id = "login-form";
     main();
 }
 
 //Login시 class = HIDDEN 값 넣어주는 함수
 function paintGreetings(saveUserName) {
     greeting.classList.remove(HIDDEN_CLASSNAME);
-    greeting.innerText = `Hello ${saveUserName}`;
-    logOut.classList.remove(HIDDEN_CLASSNAME);
-    toDoList.classList.remove(HIDDEN_CLASSNAME);
-    toDoForm.classList.remove(HIDDEN_CLASSNAME);
+    greetingAnimation(saveUserName);
+    setTimeout(() => { 
+        logOut.classList.remove(HIDDEN_CLASSNAME);
+        greeting.classList.add(HIDDEN_CLASSNAME);
+        toDoList.classList.remove(HIDDEN_CLASSNAME);
+        toDoForm.classList.remove(HIDDEN_CLASSNAME);
+    }, 3000);
+    // toDoList.classList.remove(HIDDEN_CLASSNAME);
+    // toDoForm.classList.remove(HIDDEN_CLASSNAME);
+}
+
+let finalGreet = '';
+
+function greetingAnimation(saveUserName) {
+    let greet = saveUserName + "님"; 
+    greeting.innerText = greet;
+
+    setTimeout((greet) => { 
+        greet = "새로운 세계로"; 
+        greeting.innerText = greet;
+    }, 1000);
+    setTimeout((greet) => { 
+        greet = "오신것을 환영합니다.";
+        greeting.innerText = greet;
+    }, 2000);
 }
 
 //ToDo_List Creator
@@ -112,6 +136,7 @@ function logInManager() {
             toDos.forEach(paintToDo);
             console.log(toDos);
         }
+        loginForm.id="";
         paintGreetings(saveUserName);
     }
 }
@@ -120,11 +145,11 @@ function main() {
     toDoForm.addEventListener("submit", handToDoSubmit);
     logOut.addEventListener("click", logOutButton);
     const localToDo = localStorage.getItem(TODOS_KEY);
-    if (localToDo !== null) {
-        toDos = parseTodoObject(localToDo);
-        toDos.forEach(paintToDo);
-        console.log(toDos);
-    }
+    // if (localToDo !== null) {
+    //     toDos = parseTodoObject(localToDo);
+    //     toDos.forEach(paintToDo);
+    //     console.log(toDos);
+    // }
     logInManager();
 }
 
@@ -134,4 +159,3 @@ function parseTodoObject(localToDo) {
 }
 
 main();
-

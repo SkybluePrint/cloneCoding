@@ -23,5 +23,6 @@ function getClock() {
 //         return '';
 //     }
 // }
+
 getClock();
 setInterval(getClock, 1000);
