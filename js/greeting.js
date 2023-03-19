@@ -78,6 +78,7 @@ function paintToDo(newTodo) {
     const span = document.createElement("span");
     const delToDoButton = document.createElement("button");
     delToDoButton.innerText = "Delete";
+    // delToDoButton.id = "delToDoButton";
     li.id = newTodo.id;
     li.appendChild(span);
     li.appendChild(delToDoButton);
@@ -145,11 +146,6 @@ function main() {
     toDoForm.addEventListener("submit", handToDoSubmit);
     logOut.addEventListener("click", logOutButton);
     const localToDo = localStorage.getItem(TODOS_KEY);
-    // if (localToDo !== null) {
-    //     toDos = parseTodoObject(localToDo);
-    //     toDos.forEach(paintToDo);
-    //     console.log(toDos);
-    // }
     logInManager();
 }
 
