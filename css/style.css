@@ -81,8 +81,10 @@ div #clock {
     justify-content: flex-start;    
     align-items: center;
     padding-top: 5vh;
-    z-index: 1;
     overflow: hidden;
+    word-break: break-all;
+    overflow: auto;
+    z-index: -1;
 }
 
 #login-form input {
@@ -137,8 +139,4 @@ section {
 
 .hidden {
     display: none;
-}
-
-@media screen {
-    
 }

@@ -6,6 +6,7 @@ const logOut = document.querySelector("#logout-button");
 const toDoList = document.querySelector("#todo-list");
 const toDoForm = document.querySelector("#todo-form");
 const toDoInput = toDoForm.querySelector("input");
+const logincomtain = document.getElementById("logincontainer");
 let deleteId;
 let saveUserName;
 
@@ -39,12 +40,14 @@ function logOutButton(event) {
     toDoForm.classList.add(HIDDEN_CLASSNAME);
     loginInput.value = "";
     loginForm.id = "login-form";
+    logincomtain.style.zIndex = "-1";
     main();
 }
 
 //Login시 class = HIDDEN 값 넣어주는 함수
 function paintGreetings(saveUserName) {
     greeting.classList.remove(HIDDEN_CLASSNAME);
+    logincomtain.style.zIndex = "1";
     greetingAnimation(saveUserName);
     setTimeout(() => { 
         logOut.classList.remove(HIDDEN_CLASSNAME);
@@ -61,7 +64,7 @@ let finalGreet = '';
 function greetingAnimation(saveUserName) {
     let greet = saveUserName + "님"; 
     greeting.innerText = greet;
-
+    
     setTimeout((greet) => { 
         greet = "새로운 세계로"; 
         greeting.innerText = greet;
@@ -127,7 +130,6 @@ function logInManager() {
     if (saveUserName === null) {
         //show the form
         loginForm.classList.remove(HIDDEN_CLASSNAME);
-        console.log("ok");
         loginForm.addEventListener("submit", loginButtonClick);
     } else {
         //show the h1
@@ -135,7 +137,6 @@ function logInManager() {
         if (localToDo !== null) {
             toDos = parseTodoObject(localToDo);
             toDos.forEach(paintToDo);
-            console.log(toDos);
         }
         loginForm.id="";
         paintGreetings(saveUserName);
