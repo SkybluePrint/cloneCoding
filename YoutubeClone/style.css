@@ -1,0 +1,248 @@
+/* 루트로 일정 지정해놓고 시작함. */
+:root {
+    /* color */
+    --white-color: #fff;
+    --black-color: #140a00;
+    --blue-color: #045fd0;
+    --red-color: #ff0000;
+    --grey-dark-color: #909090;
+    --grey-light-color: #e0e0e0;
+
+    /* size */
+    --side-padding: 12px;
+    --avatar-size: 36px;
+
+    /* font size */
+    --font-large: 18px;
+    --font-medium: 14px;
+    --font-small: 12px;
+    --font-micro: 10px;
+}
+
+/* 전반적으로 사이즈 지정해놓음 */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Roboto;
+}
+
+ul {
+    list-style: none;
+}
+
+button,
+button:focus {
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: transparent;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--side-padding);
+    background-color: var(--black-color);
+    color: var(--white-color);
+}
+
+header .logo {
+    font-size: var(--font-large);
+}
+
+header .logo i {
+    color: var(--red-color);
+}
+
+header .icons .fa-search {
+    margin-right: var(--side-padding);
+}
+
+.player {
+    position: sticky;
+    text-align: center;
+    background-color: #140a00;
+}
+
+.player iframe {
+    width: 100%;
+    height: 60vh;
+    max-width: 1000px;
+}
+
+body .info {
+    padding: var(--side-padding);
+}
+
+.info .metadata .hashtags {
+    display: flex;
+    font-size: var(--font-small);
+    color: var(--blue-color);
+}
+
+.info .metadata .hashtags li {
+    margin-right: var(--side-padding);
+}
+
+.info .metadata .titleAndButton {
+    display: flex;
+}
+
+.info .metadata .titleAndButton .title.clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.info .metadata .titleAndButton .title {
+    font-size: var(--font-medium);
+    margin-right: var(--side-padding);
+}
+
+.info .metadata .titleAndButton .moreBtn {
+    height: 100%;
+    /* transition:  */
+}
+
+.info .metadata .titleAndButton .moreBtn.clicked {
+    height: 100%;
+    transform: rotateX(50deg);
+}
+
+.info .views {
+    font-size: var(--font-small);
+    color: #909090;
+}
+
+
+/* actions 시작 */
+
+
+.info .actions {
+    display: flex;
+    justify-content: space-around;
+    margin: var(--side-padding) 0;
+}
+
+
+.info .actions button {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-small);
+}
+
+.info .actions button i {
+    margin: 0 auto;
+    margin-bottom: calc(var(--side-padding) / 2);
+    font-size: 16px;
+}
+
+.info .actions button i:active {
+    color: var(--blue-color);
+}
+
+.info .channel {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--grey-light-color);
+    border-bottom: 1px solid var(--grey-light-color);
+}
+
+.info .channel .metadata {
+    display: flex;
+    align-items: center;
+}
+
+.info .channel .metadata .info {
+    display: flex;
+    flex-direction: column;
+}
+
+.info .channel .metadata img {
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    border-radius: 50%;
+}
+
+.info .channel .metadata .info .subscribe {
+    font-size: var(--red-color);
+    color: var(--grey-dark-color);
+}
+
+.info .channel .subscribe {
+    text-transform: uppercase;
+    color: var(--red-color);
+    font-size: var(--font-medium);
+}
+
+/* up next */
+.UpNext {
+    padding: 0 var(--side-padding);
+}
+
+.UpNext>.title {
+    font-size: var(--font-medium);
+    color: var(--grey-dark-color);
+    margin-bottom: calc(var(--side-padding) / 2);
+}
+
+.UpNext .items {
+    display: flex;
+    margin-top: var(--side-padding);
+    justify-content: flex-start;
+}
+
+.UpNext .items .img {
+    flex: 1 1 35%;
+}
+
+.UpNext .items .img img {
+    width: 100%;
+    margin-right: var(--side-padding);
+}
+
+.UpNext .items .info {
+    flex: 1 1 60%;
+
+}
+
+.UpNext .items .moreBtn {
+    flex: 1 1 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.UpNext .items .info {
+    display: flex;
+    flex-direction: column;
+}
+
+.UpNext .items .info .title {
+    font-size: var(--font-large);
+}
+
+.UpNext .items .info .name,
+.UpNext .items .info .views{
+font-size: var(--font-micro);
+color: var(--grey-dark-color);
+}
+
+.infoAndUpNext {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media screen and (min-width:768px) {
+    .infoAndUpNext {
+        flex-direction: row;
+        flex: 1 2;
+        margin: var(--side-padding);
+    }   
+}
+

@@ -1,3 +1,4 @@
+'use strict';
 const loginForm = document.querySelector("#login-form");
 const loginInput = loginForm.querySelector("input");
 const link = document.querySelector("a");
